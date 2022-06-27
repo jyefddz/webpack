@@ -41,6 +41,31 @@ module.exports = {
                 // less 讲 less 语法 转换成 css
                 use: ['style-loader', 'css-loader', 'less-loader']
             },
+            {// webpack 5
+                test: /\.(png|jpg|gif)$/i, // 匹配的图片
+                // type: 'asset/resource', // 处理资源模块的方式
+                // asset/resource 直接复制dist 目录下
+                // type: 'asset/inline'
+                // 直接转换成based64
+
+                // 在导出一个 data URI 和发送一个单独的文件之间自动选择。
+                // 如果你设置的是asset模式
+                // 以8KB大小区分图片文件
+                // 小于8KB的, 把图片文件转base64, 打包进js中
+                // 大于8KB的, 直接把图片文件输出到dist下
+                type: 'asset',
+                dependency: { not: ['url'] },
+                // parser: { // 解析器 规则
+                //   dataUrlCondition: { // dataUrl的情况
+                //     maxSize: 8 * 1024,
+                //     // maxSize 限制最大值
+                //   },
+                // },
+                // generator: { // 生成器
+                //   filename: '[hash:6][ext]', // 资源文件处理之后 输出的文件名
+                //   // ext 文件扩展名
+                // }
+            },
         ]
     }
 }
