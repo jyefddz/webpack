@@ -36,3 +36,5 @@ const fn = () => {
 }
 
 fn()
+
+import vue from './app.vue'
