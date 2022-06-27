@@ -16,7 +16,7 @@ module.exports = {
             filename: 'index.html' // html 文件 文件名称
         }),
         // 清除dist文件下的内容
-        new CleanWebpackPlugin()
+        // new CleanWebpackPlugin()
     ],
     // 配置开发服务器
     devServer: {
@@ -65,6 +65,20 @@ module.exports = {
                 //   filename: '[hash:6][ext]', // 资源文件处理之后 输出的文件名
                 //   // ext 文件扩展名
                 // }
+            },
+            {// 字体图标 不配置也可以  css loader 也会处理的
+                // webpack 5
+                test: /\.(eot|svg|ttf|woff|woff2)$/, // 匹配所有的字体图标的文件
+                type: 'asset', // 文件直接输出
+                generator: { // 生产器
+                    filename: 'font-[name].[hash:6][ext]'
+                },
+                parser: { // 解析器 规则
+                    dataUrlCondition: { // dataUrl的情况
+                        maxSize: 1 * 1024,
+                        // maxSize 限制最大值
+                    },
+                },
             },
         ]
     }
