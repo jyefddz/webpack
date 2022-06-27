@@ -7,3 +7,6 @@ import './tabs.js'
 
 import $ from 'jquery'
 $('#swiper').css('background', 'pink')
+
+// import './styles/index.css';
+import './styles/index.less';
