@@ -1,5 +1,6 @@
 const path = require("path")
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -14,5 +15,12 @@ module.exports = {
             // template 为webpack 打包生成 dist/ html 文件指定模版
             filename: 'index.html' // html 文件 文件名称
         }),
+        // 清除dist文件下的内容
+        new CleanWebpackPlugin()
     ],
+    // 配置开发服务器
+    devServer: {
+        open: true,
+        port: 3000,
+    },
 }
